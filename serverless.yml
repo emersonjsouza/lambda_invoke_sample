@@ -1,0 +1,41 @@
+service: serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: local
+  memorySize: 512 # optional, in MB, default is 1024
+  timeout: 100
+plugins:
+  - serverless-localstack
+  - serverless-offline
+
+custom:
+  localstack:
+    stages:
+      - local
+    autostart: false
+    debug: true
+    endpoints:
+      # This section is optional - can be used for customizing the target endpoints
+      S3: http://localhost:4566
+      CloudFormation: http://localhost:4566
+      Lambda: http://localhost:4566
+      IAM: http://localhost:4566
+      STS: http://localhost:4566
+      ApiGateway: http://localhost:4566
+
+# package:
+#   individually: true
+#   excludeDevDependencies: true
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /test
+          method: get
+  another_lambda:
+    handler: another_lambda.another_lambda

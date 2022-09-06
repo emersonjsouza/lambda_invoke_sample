@@ -1,0 +1,23 @@
+{
+  "name": "sample_sls",
+  "version": "1.0.0",
+  "description": "Lambda invoke local with LocalStack AWS Cloud Emulator",
+  "main": "handler.js",
+  "scripts": {
+    "start": "npx sls offline"
+  },
+  "keywords": [
+    "lambda",
+    "lambda invoke"
+  ],
+  "author": "Emerson Jose",
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda": "^1.0.7"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.8.0",
+    "serverless": "^3.19.0",
+    "serverless-localstack": "^1.0.0"
+  }
+}
